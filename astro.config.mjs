@@ -4,11 +4,10 @@ import react from '@astrojs/react';
 import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'node:path';
-import { SITE } from './src/utils/site';
 
 // https://astro.build/config
 export default defineConfig({
-  site: SITE.url,
+  site: 'https://stevenjs.vercel.app',
   integrations: [react(), vercel()],
   vite: {
     plugins: [tailwindcss()],

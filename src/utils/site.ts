@@ -1,4 +1,23 @@
-export const SITE = {
+import { fetchSanity } from './sanity';
+
+export interface SiteConfig {
+  name: string;
+  alias: string;
+  title: string;
+  description: string;
+  url: string;
+  githubUsername: string;
+  email: string;
+  location: string;
+  education: string;
+  graduationDate: string;
+  social: {
+    github: string;
+    linkedin: string;
+  };
+}
+
+const FALLBACK_SITE: SiteConfig = {
   name: 'Steven Muñoz',
   alias: 'stevenjs',
   title: 'Software Engineer',
@@ -15,3 +34,13 @@ export const SITE = {
     linkedin: 'https://linkedin.com/in/stevenjs0',
   },
 };
+
+// Fetch site settings from Sanity with a fallback to static data
+let sanitySite = null;
+try {
+  sanitySite = await fetchSanity<SiteConfig>(`*[_type == "site"][0]`);
+} catch (error) {
+  console.error('Error fetching site config from Sanity:', error);
+}
+
+export const SITE = sanitySite || FALLBACK_SITE;
