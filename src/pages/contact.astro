@@ -1,0 +1,232 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { SITE } from '@utils/site';
+---
+
+<Layout title="Contact" description="Get in touch with Steven Muñoz">
+  <section class="section-padding-fluid mt-8 md:mt-12">
+    <div class="container-narrow">
+      <div class="section-header reveal">
+        <div class="accent-line"></div>
+        <h1>Get In Touch</h1>
+        <p>Have a project in mind or just want to chat? I'd love to hear from you.</p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+        <div class="reveal space-y-8">
+          <div class="card p-6">
+            <div class="mb-4 flex items-center gap-3">
+              <span class="relative flex h-3 w-3">
+                <span
+                  class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"
+                ></span>
+                <span class="relative inline-flex h-3 w-3 rounded-full bg-emerald-500"></span>
+              </span>
+              <span class="text-foreground text-sm font-semibold"
+                >Available for new opportunities</span
+              >
+            </div>
+            <p class="text-foreground-secondary text-sm">
+              Currently open to discussing full-time roles, contract work, and interesting side
+              projects.
+            </p>
+          </div>
+
+          <div class="divide-border/50 space-y-0 divide-y overflow-hidden rounded-xl">
+            <h3 class="text-foreground-muted px-4 pt-2 text-xs font-bold tracking-widest uppercase">
+              Contact Methods
+            </h3>
+
+            <div class="card glow-subtle rounded-none border-0 p-4">
+              <div class="flex items-start gap-4">
+                <div
+                  class="bg-accent/10 border-accent/20 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border"
+                >
+                  <svg
+                    class="text-accent h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="text-foreground-muted mb-1 font-mono text-xs">Email</div>
+                  <button
+                    id="copy-email"
+                    class="text-foreground-secondary hover:text-accent truncate text-left font-mono text-sm transition-colors"
+                  >
+                    {SITE.email}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card rounded-none border-0 p-4">
+              <div class="flex items-start gap-4">
+                <div
+                  class="bg-accent/10 border-accent/20 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border"
+                >
+                  <svg
+                    class="text-accent h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-foreground-muted mb-1 font-mono text-xs">Location</div>
+                  <div class="text-foreground-secondary text-sm">
+                    {SITE.location} · US Timezone (EST)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-foreground-muted mb-4 text-xs font-bold tracking-widest uppercase">
+              Social
+            </h3>
+            <div class="flex flex-wrap gap-3">
+              <a
+                href={SITE.social.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="border-border/50 bg-surface/50 text-foreground-secondary hover:text-foreground hover:border-accent/30 inline-flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm transition-all"
+              >
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+                  ></path>
+                </svg>
+                GitHub
+              </a>
+              <a
+                href={SITE.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="border-border/50 bg-surface/50 text-foreground-secondary hover:text-foreground hover:border-accent/30 inline-flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm transition-all"
+              >
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  ></path>
+                </svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <form
+            action={`https://formspree.io/f/YOUR_FORM_ID`}
+            <!-- TODO: Replace YOUR_FORM_ID with your actual Formspree form ID -->
+            method="POST"
+            class="card space-y-5 p-6 md:p-8"
+          >
+            <div>
+              <label for="name" class="text-foreground-muted mb-2 block font-mono text-xs"
+                >Name *</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="bg-background border-border text-foreground focus:border-accent w-full rounded-lg border px-4 py-3 text-sm transition-colors focus:outline-none"
+                placeholder="Your name"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="text-foreground-muted mb-2 block font-mono text-xs"
+                >Email *</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="bg-background border-border text-foreground focus:border-accent w-full rounded-lg border px-4 py-3 text-sm transition-colors focus:outline-none"
+                placeholder="your@email.com"
+              />
+            </div>
+
+            <div>
+              <label for="subject" class="text-foreground-muted mb-2 block font-mono text-xs"
+                >Subject</label
+              >
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                class="bg-background border-border text-foreground focus:border-accent w-full rounded-lg border px-4 py-3 text-sm transition-colors focus:outline-none"
+                placeholder="Project inquiry, collaboration, etc."
+              />
+            </div>
+
+            <div>
+              <label for="message" class="text-foreground-muted mb-2 block font-mono text-xs"
+                >Message *</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                class="bg-background border-border text-foreground focus:border-accent scrollbar-custom w-full resize-none rounded-lg border px-4 py-3 text-sm transition-colors focus:outline-none"
+                placeholder="Tell me about your project or opportunity..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full">
+              Send Message
+              <svg
+                class="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m22 2-7 20-4-9-9-4Z"></path>
+                <path d="M22 2 11 13"></path>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const emailBtn = document.getElementById('copy-email');
+  emailBtn?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText('{SITE.email}');
+      const orig = emailBtn.textContent;
+      emailBtn.textContent = 'Copied!';
+      emailBtn.classList.add('text-accent');
+      setTimeout(() => {
+        emailBtn.textContent = orig;
+        emailBtn.classList.remove('text-accent');
+      }, 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  });
+</script>

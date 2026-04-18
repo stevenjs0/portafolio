@@ -1,0 +1,39 @@
+---
+import Layout from '@layouts/Layout.astro';
+import ProjectFilters from '@react/ProjectFilters';
+import { getAllProjects } from '@utils/projects';
+import { urlFor } from '@utils/sanity';
+
+const allProjects = await getAllProjects();
+const sortedProjects = allProjects.map((p) => ({
+  slug: p.slug.current,
+  title: p.title,
+  summary: p.summary,
+  metrics: p.metrics,
+  technologies: p.technologies,
+  featured: p.featured,
+  category: p.category,
+  date: p.date,
+  cover_image: p.coverImage ? urlFor(p.coverImage).width(800).url() : null,
+}));
+---
+
+<Layout title="Projects" description="Featured projects and case studies">
+  <section class="section-padding-fluid mt-8 md:mt-12">
+    <div class="container-wide">
+      <div class="section-header reveal">
+        <div class="accent-line"></div>
+        <h1>Projects</h1>
+        <p>
+          Real problems solved, real impact delivered. Each project showcases specific achievements
+          and measurable results.
+        </p>
+      </div>
+
+      <div class="reveal">
+        <ProjectFilters client:visible projects={JSON.stringify(sortedProjects)} />
+      </div>
+    </div>
+  </section>
+</Layout>
+

@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "pageId": {
+      "type": "string"
+    },
+    "seoTitle": {
+      "type": "string"
+    },
+    "seoDescription": {
+      "type": "string"
+    },
+    "greeting": {
+      "type": "string"
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "ctaPrimary": {
+      "type": "string"
+    },
+    "ctaSecondary": {
+      "type": "string"
+    },
+    "statusBadge": {
+      "type": "string"
+    },
+    "techStack": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "footerTagline": {
+      "type": "string"
+    },
+    "navLabels": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sectionHeadingFeaturedProjects": {
+      "type": "string"
+    },
+    "sectionDescFeaturedProjects": {
+      "type": "string"
+    },
+    "sectionHeadingLatestWriting": {
+      "type": "string"
+    },
+    "sectionDescLatestWriting": {
+      "type": "string"
+    },
+    "sectionHeadingLetsWorkTogether": {
+      "type": "string"
+    },
+    "sectionDescLetsWorkTogether": {
+      "type": "string"
+    },
+    "ctaViewAllProjects": {
+      "type": "string"
+    },
+    "ctaReadAllPosts": {
+      "type": "string"
+    },
+    "statsYearsExperience": {
+      "type": "string"
+    },
+    "statsProjectsBuilt": {
+      "type": "string"
+    },
+    "statsGitHubFollowers": {
+      "type": "string"
+    },
+    "statsClientsServed": {
+      "type": "string"
+    },
+    "bioParagraphs": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "whatDrivesMe": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "skillsCurrentlyExploring": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "skillsSoft": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "availabilityStatus": {
+      "type": "string"
+    },
+    "formPlaceholdersName": {
+      "type": "string"
+    },
+    "formPlaceholdersEmail": {
+      "type": "string"
+    },
+    "formPlaceholdersSubject": {
+      "type": "string"
+    },
+    "formPlaceholdersMessage": {
+      "type": "string"
+    },
+    "experienceHeading": {
+      "type": "string"
+    },
+    "experienceDescription": {
+      "type": "string"
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "pageId"
+  ]
+}

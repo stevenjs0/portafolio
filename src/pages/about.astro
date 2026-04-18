@@ -1,0 +1,179 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { getGitHubProfile, getGitHubAvatarUrl } from '@utils/github';
+import { SITE } from '@utils/site';
+import { getPageContent, parseSkillList } from '@utils/pages';
+
+const profile = await getGitHubProfile();
+const avatarUrl = getGitHubAvatarUrl();
+const pageContent = await getPageContent('about');
+const parsedWhatDrivesMe = parseSkillList(pageContent?.whatDrivesMe ?? []);
+---
+
+<Layout title="About" description={`About ${SITE.name} - Software Engineer from Ecuador`}>
+  <section class="section-padding-fluid mt-8 md:mt-12">
+    <div class="container-narrow">
+      <div class="section-header reveal">
+        <div class="accent-line"></div>
+        <h1>{pageContent?.aboutHeading ?? 'About Me'}</h1>
+        <p>{pageContent?.aboutDescription ?? 'Software engineer from Ecuador, building solutions for clients worldwide.'}</p>
+      </div>
+
+      <div class="reveal mb-16 grid grid-cols-1 gap-8 md:grid-cols-[280px_1fr] lg:gap-12">
+        <div class="mx-auto md:mx-0">
+          <div class="group relative">
+            <div
+              class="aspect-portrait border-border/50 bg-surface overflow-hidden rounded-2xl border-2"
+            >
+              <img
+                src={avatarUrl}
+                alt={SITE.name}
+                class="object-center-top h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="border-accent/20 group-hover:border-accent/40 absolute -right-3 -bottom-3 -z-10 h-full w-full rounded-2xl border-2 transition-colors"
+            >
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="mb-4 text-2xl font-bold">
+            I'm <span class="text-foreground">{SITE.name}</span>
+          </h3>
+          <p class="text-accent mb-6 font-mono text-lg">@{SITE.alias}</p>
+
+          <div class="text-foreground-secondary space-y-4 leading-relaxed">
+            {
+              profile?.bio && (
+                <p class="text-foreground border-accent/30 border-l-2 pl-4 text-base italic">
+                  "{profile.bio}"
+                </p>
+              )
+            }
+
+            <p>
+              Graduated from <strong class="text-foreground">{SITE.education}</strong> in <strong
+                class="text-foreground">{SITE.graduationDate}</strong
+              >, with 3+ years of experience building software for US clients.
+            </p>
+
+            <p>
+              I focus on solving real problems with clean, maintainable code. My approach combines
+              technical expertise with strong communication skills to deliver solutions that exceed
+              expectations.
+            </p>
+
+            <p>
+              When I'm not coding, you'll find me exploring new technologies, contributing to
+              open-source projects, or sharing knowledge with the developer community.
+            </p>
+          </div>
+
+          <div
+            class="text-foreground-muted mt-6 flex flex-wrap items-center justify-center gap-4 font-mono text-sm md:justify-start"
+          >
+            <span class="inline-flex items-center gap-2">
+              <svg
+                class="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              {SITE.location}
+            </span>
+            <span class="inline-flex items-center gap-2">
+              <svg
+                class="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M22 10v6M2 12l4-4 4 4 4-8 4 4 4-4 4 8"></path>
+              </svg>
+              {SITE.education}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-auto-fit-sm reveal mb-16 grid gap-6">
+        <div class="card p-6 text-center">
+          <div class="text-accent mb-2 text-3xl font-bold">3+</div>
+          <div class="text-foreground-secondary text-sm">{pageContent?.statsYearsExperience ?? 'Years Experience'}</div>
+        </div>
+        <div class="card p-6 text-center">
+          <div class="text-accent mb-2 text-3xl font-bold">{profile?.followers ?? '—'}</div>
+          <div class="text-foreground-secondary text-sm">{pageContent?.statsGitHubFollowers ?? 'GitHub Followers'}</div>
+        </div>
+        <div class="card p-6 text-center">
+          <div class="text-accent mb-2 text-3xl font-bold">{profile?.public_repos ?? '—'}</div>
+          <div class="text-foreground-secondary text-sm">{pageContent?.statsPublicRepos ?? 'Public Repos'}</div>
+        </div>
+        <div class="card p-6 text-center">
+          <div class="text-accent mb-2 text-3xl font-bold">US</div>
+          <div class="text-foreground-secondary text-sm">{pageContent?.statsClientsServed ?? 'Clients Served'}</div>
+        </div>
+      </div>
+
+      <div class="reveal mt-20">
+        <h2 class="mb-10 text-center text-2xl font-bold">{pageContent?.whatDrivesMeHeading ?? "What Drives Me"}</h2>
+        <div class="grid-auto-fill-md grid gap-8">
+          {
+            parsedWhatDrivesMe.map((item, index) => (
+              <div class="card p-6 text-center">
+                <div
+                  class="bg-accent/10 border-accent/20 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl border"
+                >
+                  {index === 0 && (
+                    <svg class="text-accent h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                      <path d="M5 3v4M9 5h4M3 7.5h4"></path>
+                    </svg>
+                  )}
+                  {index === 1 && (
+                    <svg class="text-accent h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48 2.83-2.83"></path>
+                    </svg>
+                  )}
+                  {index === 2 && (
+                    <svg class="text-accent h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                      <path d="M2 12h20"></path>
+                    </svg>
+                  )}
+                </div>
+                <h3 class="mb-2 text-base font-bold">{item.title}</h3>
+                <p class="text-foreground-secondary text-sm">{item.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="reveal mt-12 text-center">
+        {/* TODO: Add resume.pdf to public/ folder */}
+        <a href="/resume.pdf" class="btn btn-primary" download>
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" x2="12" y1="15" y2="3"></line>
+          </svg>
+          {pageContent?.ctaDownloadResume ?? 'Download Resume'}
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

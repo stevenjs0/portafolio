@@ -1,0 +1,22 @@
+# Build outputs
+dist/
+build/
+
+# Dependencies
+node_modules/
+
+# Astro
+.astro/
+
+# Misc
+.gitignore
+.prettierignore
+*.md
+
+# Environment
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/

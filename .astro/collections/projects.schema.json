@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "coverImage": {
+      "type": "string"
+    },
+    "problem": {
+      "type": "string"
+    },
+    "solution": {
+      "type": "string"
+    },
+    "impact": {
+      "type": "string"
+    },
+    "metrics": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "technologies": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "role": {
+      "type": "string"
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "demo": {
+          "type": "string"
+        },
+        "github": {
+          "type": "string"
+        },
+        "caseStudy": {
+          "type": "string"
+        }
+      }
+    },
+    "featured": {
+      "default": false,
+      "type": "boolean"
+    },
+    "category": {
+      "default": "Web Development",
+      "type": "string"
+    },
+    "caseStudy": {
+      "default": false,
+      "type": "boolean"
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "date",
+    "summary",
+    "problem",
+    "solution",
+    "impact",
+    "role"
+  ]
+}

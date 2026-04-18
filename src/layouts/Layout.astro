@@ -1,0 +1,118 @@
+---
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import { SITE } from '@utils/site';
+import '@styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const pageTitle = title ? `${title} | ${SITE.name}` : `${SITE.name} | ${SITE.title}`;
+const pageDesc = description ?? SITE.description;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDesc} />
+    <meta name="author" content={SITE.name} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={SITE.url + Astro.url.pathname} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDesc} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={SITE.url + Astro.url.pathname} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDesc} />
+    <meta name="twitter:creator" content={`@${SITE.alias}`} />
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Prevent FOUC: Initialize theme before paint -->
+    <script is:raw is:inline>
+      (function () {
+        var theme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+  </head>
+  <body class="layout-holy-grail scrollbar-custom min-h-screen antialiased">
+    <a
+      href="#main-content"
+      class="focus:z-modal focus:bg-accent focus:text-background sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:rounded-md focus:px-4 focus:py-2"
+    >
+      Skip to main content
+    </a>
+
+    <Header />
+
+    <main id="main-content" class="flex min-w-0 flex-col">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <!-- Scroll reveal script -->
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' },
+      );
+
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+
+    <!-- Robust image fallback handler -->
+    <script is:inline>
+      (function () {
+        function handleImageError(img) {
+          var fallback = img.getAttribute('data-fallback');
+          if (!fallback) return;
+
+          // Track if fallback already tried to prevent infinite loops
+          if (img.hasAttribute('data-fallback-tried')) return;
+
+          img.setAttribute('data-fallback-tried', 'true');
+          img.src = fallback;
+        }
+
+        // Use event delegation for efficiency and to catch dynamically added images
+        document.addEventListener(
+          'error',
+          function (e) {
+            if (e.target.tagName === 'IMG') {
+              handleImageError(e.target);
+            }
+          },
+          true,
+        );
+      })();
+    </script>
+  </body>
+</html>

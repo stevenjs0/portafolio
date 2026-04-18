@@ -1,0 +1,24 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Timeline from '@react/Timeline';
+import { getAllExperience } from '@utils/experience';
+
+const experiences = await getAllExperience();
+---
+
+<Layout title="Experience" description="Career journey and professional experience">
+  <section class="section-padding mt-8 md:mt-12">
+    <div class="container-narrow">
+      <div class="section-header reveal">
+        <div class="accent-line"></div>
+        <h1>Experience</h1>
+        <p>From Ecuador to building software for US clients. My professional journey.</p>
+      </div>
+
+      <div class="reveal">
+        <Timeline client:visible experiences={experiences} />
+      </div>
+    </div>
+  </section>
+</Layout>
+
