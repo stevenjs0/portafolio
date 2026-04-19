@@ -8,6 +8,7 @@ export interface SiteConfig {
   url: string;
   githubUsername: string;
   email: string;
+  formspreeId: string;
   location: string;
   education: string;
   graduationDate: string;
@@ -26,6 +27,7 @@ const FALLBACK_SITE: SiteConfig = {
   url: 'https://stevenjs.vercel.app',
   githubUsername: 'stevenjs0',
   email: 'erick.steven@email.com',
+  formspreeId: 'YOUR_FORM_ID',
   location: 'Ecuador',
   education: 'Universidad Politécnica Nacional del Ecuador',
   graduationDate: 'April 2024',
@@ -36,11 +38,19 @@ const FALLBACK_SITE: SiteConfig = {
 };
 
 // Fetch site settings from Sanity with a fallback to static data
-let sanitySite = null;
+let sanitySite: Partial<SiteConfig> | null = null;
 try {
   sanitySite = await fetchSanity<SiteConfig>(`*[_type == "site"][0]`);
 } catch (error) {
   console.error('Error fetching site config from Sanity:', error);
 }
 
-export const SITE = sanitySite || FALLBACK_SITE;
+// Deep merge strategy: Use Sanity data if available, otherwise fallback
+export const SITE: SiteConfig = {
+  ...FALLBACK_SITE,
+  ...(sanitySite || {}),
+  social: {
+    ...FALLBACK_SITE.social,
+    ...(sanitySite?.social || {}),
+  },
+};

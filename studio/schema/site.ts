@@ -41,6 +41,12 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'formspreeId',
+      title: 'Formspree ID',
+      type: 'string',
+      description: 'The ID from your Formspree form URL (e.g., f/xxxxxx)',
+    }),
+    defineField({
       name: 'location',
       title: 'Location',
       type: 'string',

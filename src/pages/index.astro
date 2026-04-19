@@ -18,7 +18,7 @@ const featuredPosts = await getLatestPosts(2);
 <Layout>
   <Hero githubFollowers={profile?.followers} githubRepos={profile?.public_repos} />
 
-  <section class="section-padding-fluid bg-background-elevated/30 mt-4 px-4 md:mt-8 md:px-6">
+  <section class="section-padding-fluid bg-background-elevated/30 px-4 md:px-6">
     <div class="container-narrow">
       <div class="section-header reveal">
         <div class="accent-line"></div>
@@ -85,7 +85,7 @@ const featuredPosts = await getLatestPosts(2);
     </div>
   </section>
 
-  <section class="section-padding-fluid mt-12 px-4 md:mt-16 md:px-6">
+  <section class="section-padding-fluid px-4 md:px-6">
     <div class="container-narrow">
       <div class="grid-auto-fit-sm reveal grid gap-6">
         <div class="card p-6 text-center">
@@ -114,7 +114,7 @@ const featuredPosts = await getLatestPosts(2);
 
   {
     featuredPosts.length > 0 && (
-      <section class="section-padding-fluid bg-background-elevated/30 mt-8 px-4 md:mt-12 md:px-6">
+      <section class="section-padding-fluid bg-background-elevated/30 px-4 md:px-6">
         <div class="container-narrow">
           <div class="section-header reveal">
             <div class="accent-line" />
@@ -187,7 +187,7 @@ const featuredPosts = await getLatestPosts(2);
     )
   }
 
-  <section class="section-padding-fluid mt-12 px-4 md:mt-16 md:px-6">
+  <section class="section-padding-fluid px-4 md:px-6">
     <div class="container-narrow">
       <div class="card reveal glow-subtle p-8 text-center md:p-12">
         <h2 class="mb-4">{pageContent?.sectionHeadingLetsWorkTogether ?? "Let's Work Together"}</h2>
