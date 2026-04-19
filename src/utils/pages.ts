@@ -21,9 +21,12 @@ export interface PageContent {
   sectionDescLetsWorkTogether?: string;
   ctaViewAllProjects?: string;
   ctaReadAllPosts?: string;
+  ctaContactMe?: string;
+  ctaLinkedIn?: string;
   statsYearsExperience?: string;
   statsProjectsBuilt?: string;
   statsGitHubFollowers?: string;
+  statsPublicRepos?: string;
   statsClientsServed?: string;
   bioParagraphs: string[];
   whatDrivesMe: string[];

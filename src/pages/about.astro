@@ -54,22 +54,12 @@ const parsedWhatDrivesMe = parseSkillList(pageContent?.whatDrivesMe ?? []);
               )
             }
 
-            <p>
-              Graduated from <strong class="text-foreground">{SITE.education}</strong> in <strong
-                class="text-foreground">{SITE.graduationDate}</strong
-              >, with 3+ years of experience building software for US clients.
-            </p>
-
-            <p>
-              I focus on solving real problems with clean, maintainable code. My approach combines
-              technical expertise with strong communication skills to deliver solutions that exceed
-              expectations.
-            </p>
-
-            <p>
-              When I'm not coding, you'll find me exploring new technologies, contributing to
-              open-source projects, or sharing knowledge with the developer community.
-            </p>
+            {
+              pageContent?.bioParagraphs && pageContent.bioParagraphs.length > 0 && 
+                pageContent.bioParagraphs.map((paragraph: string) => (
+                  <p>{paragraph}</p>
+                ))
+            }
           </div>
 
           <div
@@ -110,19 +100,27 @@ const parsedWhatDrivesMe = parseSkillList(pageContent?.whatDrivesMe ?? []);
 
       <div class="grid-auto-fit-sm reveal mb-16 grid gap-6">
         <div class="card p-6 text-center">
-          <div class="text-accent mb-2 text-3xl font-bold">3+</div>
+          <div class="text-accent mb-2 text-3xl font-bold">
+            {pageContent?.stats?.yearsExperience}
+          </div>
           <div class="text-foreground-secondary text-sm">{pageContent?.statsYearsExperience ?? 'Years Experience'}</div>
         </div>
         <div class="card p-6 text-center">
-          <div class="text-accent mb-2 text-3xl font-bold">{profile?.followers ?? '—'}</div>
+          <div class="text-accent mb-2 text-3xl font-bold">
+            {pageContent?.stats?.githubFollowers ?? profile?.followers}
+          </div>
           <div class="text-foreground-secondary text-sm">{pageContent?.statsGitHubFollowers ?? 'GitHub Followers'}</div>
         </div>
         <div class="card p-6 text-center">
-          <div class="text-accent mb-2 text-3xl font-bold">{profile?.public_repos ?? '—'}</div>
+          <div class="text-accent mb-2 text-3xl font-bold">
+            {pageContent?.stats?.projectsBuilt ?? profile?.public_repos}
+          </div>
           <div class="text-foreground-secondary text-sm">{pageContent?.statsPublicRepos ?? 'Public Repos'}</div>
         </div>
         <div class="card p-6 text-center">
-          <div class="text-accent mb-2 text-3xl font-bold">US</div>
+          <div class="text-accent mb-2 text-3xl font-bold">
+            {pageContent?.stats?.clientsServed}
+          </div>
           <div class="text-foreground-secondary text-sm">{pageContent?.statsClientsServed ?? 'Clients Served'}</div>
         </div>
       </div>
