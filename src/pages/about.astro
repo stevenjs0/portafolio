@@ -15,8 +15,8 @@ const parsedWhatDrivesMe = parseSkillList(pageContent?.whatDrivesMe ?? []);
     <div class="container-narrow">
       <div class="section-header reveal">
         <div class="accent-line"></div>
-        <h1>{pageContent?.aboutHeading ?? 'About Me'}</h1>
-        <p>{pageContent?.aboutDescription ?? 'Software engineer from Ecuador, building solutions for clients worldwide.'}</p>
+        <h1>{pageContent?.aboutHeading}</h1>
+        <p>{pageContent?.aboutDescription}</p>
       </div>
 
       <div class="reveal mb-16 grid grid-cols-1 gap-8 md:grid-cols-[280px_1fr] lg:gap-12">
@@ -46,14 +46,6 @@ const parsedWhatDrivesMe = parseSkillList(pageContent?.whatDrivesMe ?? []);
           <p class="text-accent mb-6 font-mono text-lg">@{SITE.alias}</p>
 
           <div class="text-foreground-secondary space-y-4 leading-relaxed">
-            {
-              profile?.bio && (
-                <p class="text-foreground border-accent/30 border-l-2 pl-4 text-base italic">
-                  "{profile.bio}"
-                </p>
-              )
-            }
-
             {
               pageContent?.bioParagraphs && pageContent.bioParagraphs.length > 0 && 
                 pageContent.bioParagraphs.map((paragraph: string) => (
@@ -98,35 +90,39 @@ const parsedWhatDrivesMe = parseSkillList(pageContent?.whatDrivesMe ?? []);
         </div>
       </div>
 
-      <div class="grid-auto-fit-sm reveal mb-16 grid gap-6">
-        <div class="card p-6 text-center">
-          <div class="text-accent mb-2 text-3xl font-bold">
-            {pageContent?.stats?.yearsExperience}
+      {
+        pageContent?.stats && (
+          <div class="grid-auto-fit-sm reveal mb-16 grid gap-6">
+            {pageContent.stats.yearsExperience && (
+              <div class="card p-6 text-center">
+                <div class="text-accent mb-2 text-3xl font-bold">{pageContent.stats.yearsExperience}</div>
+                <div class="text-foreground-secondary text-sm">Years Experience</div>
+              </div>
+            )}
+            { (pageContent.stats.githubFollowers || profile?.followers) && (
+              <div class="card p-6 text-center">
+                <div class="text-accent mb-2 text-3xl font-bold">{pageContent.stats.githubFollowers || profile?.followers}</div>
+                <div class="text-foreground-secondary text-sm">GitHub Followers</div>
+              </div>
+            )}
+            { (pageContent.stats.projectsBuilt || profile?.public_repos) && (
+              <div class="card p-6 text-center">
+                <div class="text-accent mb-2 text-3xl font-bold">{pageContent.stats.projectsBuilt || profile?.public_repos}</div>
+                <div class="text-foreground-secondary text-sm">Public Repos</div>
+              </div>
+            )}
+            {pageContent.stats.clientsServed && (
+              <div class="card p-6 text-center">
+                <div class="text-accent mb-2 text-3xl font-bold">{pageContent.stats.clientsServed}</div>
+                <div class="text-foreground-secondary text-sm">Clients Served</div>
+              </div>
+            )}
           </div>
-          <div class="text-foreground-secondary text-sm">{pageContent?.statsYearsExperience ?? 'Years Experience'}</div>
-        </div>
-        <div class="card p-6 text-center">
-          <div class="text-accent mb-2 text-3xl font-bold">
-            {pageContent?.stats?.githubFollowers ?? profile?.followers}
-          </div>
-          <div class="text-foreground-secondary text-sm">{pageContent?.statsGitHubFollowers ?? 'GitHub Followers'}</div>
-        </div>
-        <div class="card p-6 text-center">
-          <div class="text-accent mb-2 text-3xl font-bold">
-            {pageContent?.stats?.projectsBuilt ?? profile?.public_repos}
-          </div>
-          <div class="text-foreground-secondary text-sm">{pageContent?.statsPublicRepos ?? 'Public Repos'}</div>
-        </div>
-        <div class="card p-6 text-center">
-          <div class="text-accent mb-2 text-3xl font-bold">
-            {pageContent?.stats?.clientsServed}
-          </div>
-          <div class="text-foreground-secondary text-sm">{pageContent?.statsClientsServed ?? 'Clients Served'}</div>
-        </div>
-      </div>
+        )
+      }
 
       <div class="reveal mt-20">
-        <h2 class="mb-10 text-center text-2xl font-bold">{pageContent?.whatDrivesMeHeading ?? "What Drives Me"}</h2>
+        <h2 class="mb-10 text-center text-2xl font-bold">{pageContent?.whatDrivesMeHeading}</h2>
         <div class="grid-auto-fill-md grid gap-8">
           {
             parsedWhatDrivesMe.map((item, index) => (
@@ -168,7 +164,7 @@ const parsedWhatDrivesMe = parseSkillList(pageContent?.whatDrivesMe ?? []);
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" x2="12" y1="15" y2="3"></line>
           </svg>
-          {pageContent?.ctaDownloadResume ?? 'Download Resume'}
+          {pageContent?.ctaDownloadResume}
         </a>
       </div>
     </div>
