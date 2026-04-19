@@ -8,7 +8,13 @@ import path from 'node:path';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://stevenjs.vercel.app',
-  integrations: [react(), vercel()],
+  output: 'server',
+  adapter: vercel({
+    isr: {
+      expiration: 60,
+    },
+  }),
+  integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
     resolve: {
