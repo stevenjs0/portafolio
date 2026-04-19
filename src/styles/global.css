@@ -47,104 +47,106 @@ html {
     color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-body {
-  transition:
-    background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-    color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
+@layer base {
+  body {
+    transition:
+      background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-  text-rendering: optimizeLegibility;
-  scroll-padding-top: 100px;
-}
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    scroll-padding-top: 100px;
+  }
 
-body {
-  font-family: var(--font-body);
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-  line-height: 1.7;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-display);
-  line-height: 1.15;
-  letter-spacing: -0.025em;
-  font-weight: 700;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    font-weight: 700;
+  }
 
-h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-}
-h2 {
-  font-size: clamp(2rem, 4vw, 2.75rem);
-}
-h3 {
-  font-size: clamp(1.5rem, 3vw, 1.875rem);
-}
-h4 {
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
-}
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+  }
+  h2 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+  }
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 1.875rem);
+  }
+  h4 {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+  }
 
-p {
-  margin-bottom: 1rem;
-  color: var(--color-foreground-secondary);
-}
+  p {
+    margin-bottom: 1rem;
+    color: var(--color-foreground-secondary);
+  }
 
-/* Base link styles - low specificity so utilities can override */
-a:not([class]) {
-  color: var(--color-accent);
-  text-decoration: none;
-  transition:
-    color 0.2s ease,
-    opacity 0.2s ease;
-}
+  /* Base link styles - low specificity so utilities can override */
+  a:not([class]) {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition:
+      color 0.2s ease,
+      opacity 0.2s ease;
+  }
 
-a:not([class]):hover {
-  color: var(--color-accent-hover);
-}
+  a:not([class]):hover {
+    color: var(--color-accent-hover);
+  }
 
-/* Default styles for links with classes (Tailwind will override) */
-a[class] {
-  text-decoration: none;
-  transition:
-    color 0.2s ease,
-    opacity 0.2s ease;
-}
+  /* Default styles for links with classes (Tailwind will override) */
+  a[class] {
+    text-decoration: none;
+    transition:
+      color 0.2s ease,
+      opacity 0.2s ease;
+  }
 
-::selection {
-  background-color: var(--color-accent);
-  color: var(--color-background);
-}
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-background);
+  }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
 
-button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-  background: none;
-}
+  button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+  }
 
-input,
-textarea,
-select {
-  font-family: inherit;
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+  }
 }
 
 /* ─── Container utilities (FIXED FOR 2K) ─── */

@@ -6,7 +6,7 @@ import { getAllSkills } from '@utils/skills';
 
 const pageContent = await getPageContent('skills');
 const softSkills = parseSkillList(pageContent?.skillsSoft ?? []);
-const currentlyExploring = pageContent?.skillsCurrentlyExploring ?? ['Astro', 'Next.js', 'Go', 'System Design', 'React Server Components'];
+const currentlyExploring = pageContent?.skillsCurrentlyExploring ?? [];
 
 const skillCategories = await getAllSkills();
 ---

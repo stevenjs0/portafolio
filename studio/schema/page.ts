@@ -77,6 +77,35 @@ export default {
       title: 'Footer Tagline',
       type: 'string',
     },
+    // Skills Page specific
+    {
+      name: 'skillsHeading',
+      title: 'Skills Heading',
+      type: 'string',
+    },
+    {
+      name: 'skillsDescription',
+      title: 'Skills Description',
+      type: 'text',
+    },
+    {
+      name: 'skillsSoft',
+      title: 'Soft Skills',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: 'Format: "Title - Description"',
+    },
+    {
+      name: 'currentlyExploringHeading',
+      title: 'Currently Exploring Heading',
+      type: 'string',
+    },
+    {
+      name: 'skillsCurrentlyExploring',
+      title: 'Skills Currently Exploring',
+      type: 'array',
+      of: [{ type: 'string' }],
+    },
     // Stats
     {
       name: 'stats',
