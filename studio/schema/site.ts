@@ -62,6 +62,14 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'resume',
+      title: 'Resume (PDF)',
+      type: 'file',
+      options: {
+        accept: '.pdf',
+      },
+    }),
+    defineField({
       name: 'social',
       title: 'Social Links',
       type: 'object',

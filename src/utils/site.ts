@@ -9,6 +9,7 @@ export interface SiteConfig {
   githubUsername: string;
   email: string;
   formspreeId: string;
+  resumeUrl?: string;
   location: string;
   education: string;
   graduationDate: string;
@@ -28,6 +29,7 @@ const FALLBACK_SITE: SiteConfig = {
   githubUsername: 'stevenjs0',
   email: 'erick.steven@email.com',
   formspreeId: 'YOUR_FORM_ID',
+  resumeUrl: '/resume.pdf',
   location: 'Ecuador',
   education: 'Universidad Politécnica Nacional del Ecuador',
   graduationDate: 'April 2024',
@@ -40,7 +42,12 @@ const FALLBACK_SITE: SiteConfig = {
 // Fetch site settings from Sanity with a fallback to static data
 let sanitySite: Partial<SiteConfig> | null = null;
 try {
-  sanitySite = await fetchSanity<SiteConfig>(`*[_type == "site"][0]`);
+  sanitySite = await fetchSanity<SiteConfig>(`
+    *[_type == "site"][0]{
+      ...,
+      "resumeUrl": resume.asset->url
+    }
+  `);
 } catch (error) {
   console.error('Error fetching site config from Sanity:', error);
 }
