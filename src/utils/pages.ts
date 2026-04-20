@@ -24,9 +24,6 @@ export interface PageContent {
   ctaContactMe?: string;
   ctaLinkedIn?: string;
   statsYearsExperience?: string;
-  statsProjectsBuilt?: string;
-  statsGitHubFollowers?: string;
-  statsPublicRepos?: string;
   statsClientsServed?: string;
   bioParagraphs: string[];
   whatDrivesMe: string[];
@@ -59,8 +56,6 @@ export async function getPageContent(pageId: string): Promise<PageContent | null
   const query = `*[_type == "page" && pageId == $pageId][0] {
     ...,
     "statsYearsExperience": stats.yearsExperience,
-    "statsProjectsBuilt": stats.projectsBuilt,
-    "statsGitHubFollowers": stats.githubFollowers,
     "statsClientsServed": stats.clientsServed
   }`;
   const page = await fetchSanity<any>(query, { pageId });

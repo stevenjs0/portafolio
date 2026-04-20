@@ -1,5 +1,6 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import StatsGrid from '@components/StatsGrid.astro';
 import { getGitHubProfile, getGitHubAvatarUrl } from '@utils/github';
 import { SITE } from '@utils/site';
 import { getPageContent, parseSkillList } from '@utils/pages';
@@ -91,33 +92,12 @@ const parsedWhatDrivesMe = parseSkillList(pageContent?.whatDrivesMe ?? []);
       </div>
 
       {
-        pageContent?.stats && (
-          <div class="grid-auto-fit-sm reveal mb-16 grid gap-6">
-            {pageContent.stats.yearsExperience && (
-              <div class="card p-6 text-center">
-                <div class="text-accent mb-2 text-3xl font-bold">{pageContent.stats.yearsExperience}</div>
-                <div class="text-foreground-secondary text-sm">Years Experience</div>
-              </div>
-            )}
-            { (pageContent.stats.githubFollowers || profile?.followers) && (
-              <div class="card p-6 text-center">
-                <div class="text-accent mb-2 text-3xl font-bold">{pageContent.stats.githubFollowers || profile?.followers}</div>
-                <div class="text-foreground-secondary text-sm">GitHub Followers</div>
-              </div>
-            )}
-            { (pageContent.stats.projectsBuilt || profile?.public_repos) && (
-              <div class="card p-6 text-center">
-                <div class="text-accent mb-2 text-3xl font-bold">{pageContent.stats.projectsBuilt || profile?.public_repos}</div>
-                <div class="text-foreground-secondary text-sm">Public Repos</div>
-              </div>
-            )}
-            {pageContent.stats.clientsServed && (
-              <div class="card p-6 text-center">
-                <div class="text-accent mb-2 text-3xl font-bold">{pageContent.stats.clientsServed}</div>
-                <div class="text-foreground-secondary text-sm">Clients Served</div>
-              </div>
-            )}
-          </div>
+        (pageContent?.statsYearsExperience || pageContent?.statsClientsServed) && (
+          <StatsGrid
+            profile={profile}
+            yearsExperience={pageContent?.statsYearsExperience}
+            clientsServed={pageContent?.statsClientsServed}
+          />
         )
       }
 

@@ -113,8 +113,6 @@ export default {
       type: 'object',
       fields: [
         { name: 'yearsExperience', title: 'Years of Experience', type: 'string' },
-        { name: 'projectsBuilt', title: 'Projects Built', type: 'string' },
-        { name: 'githubFollowers', title: 'GitHub Followers', type: 'string' },
         { name: 'clientsServed', title: 'Clients Served', type: 'string' },
       ],
     },

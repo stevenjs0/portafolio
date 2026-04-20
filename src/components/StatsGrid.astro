@@ -1,0 +1,40 @@
+---
+import { SITE_STATS } from '@utils/stats';
+import type { GitHubUser } from '@utils/github';
+
+interface Props {
+  profile?: GitHubUser | null;
+  yearsExperience?: string | null;
+  clientsServed?: string | null;
+}
+
+const { profile, yearsExperience, clientsServed } = Astro.props;
+
+const stats = [
+  {
+    value: yearsExperience ?? SITE_STATS.yearsExperience,
+    label: 'Years Experience',
+  },
+  {
+    value: profile?.public_repos ?? SITE_STATS.projectsBuilt,
+    label: 'Public Repos',
+  },
+  {
+    value: profile?.followers ?? SITE_STATS.githubFollowers,
+    label: 'GitHub Followers',
+  },
+  {
+    value: clientsServed ?? SITE_STATS.clientsServed,
+    label: 'Clients Served',
+  },
+];
+---
+
+<div class="grid-auto-fit-sm grid gap-6">
+  {stats.map((stat) => (
+    <div class="card p-6 text-center">
+      <div class="text-accent mb-2 text-3xl font-bold md:text-4xl">{stat.value}</div>
+      <div class="text-foreground-secondary text-sm">{stat.label}</div>
+    </div>
+  ))}
+</div>

@@ -1,9 +1,9 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import Hero from '@components/Hero.astro';
+import StatsGrid from '@components/StatsGrid.astro';
 import { getGitHubProfile } from '@utils/github';
 import { SITE } from '@utils/site';
-import { SITE_STATS } from '@utils/stats';
 import { getPageContent } from '@utils/pages';
 import { getFeaturedProjects } from '@utils/projects';
 import { getLatestPosts } from '@utils/blog';
@@ -87,28 +87,7 @@ const featuredPosts = await getLatestPosts(2);
 
   <section class="section-padding-fluid px-4 md:px-6">
     <div class="container-narrow">
-      <div class="grid-auto-fit-sm reveal grid gap-6">
-        <div class="card p-6 text-center">
-          <div class="text-accent mb-2 text-3xl font-bold md:text-4xl">{SITE_STATS.yearsExperience}</div>
-          <div class="text-foreground-secondary text-sm">{pageContent?.statsYearsExperience ?? 'Years Experience'}</div>
-        </div>
-        <div class="card p-6 text-center">
-          <div class="text-accent mb-2 text-3xl font-bold md:text-4xl">
-            {profile?.public_repos ?? SITE_STATS.projectsBuilt}
-          </div>
-          <div class="text-foreground-secondary text-sm">{pageContent?.statsProjectsBuilt ?? 'Projects Built'}</div>
-        </div>
-        <div class="card p-6 text-center">
-          <div class="text-accent mb-2 text-3xl font-bold md:text-4xl">
-            {profile?.followers ?? SITE_STATS.githubFollowers}
-          </div>
-          <div class="text-foreground-secondary text-sm">{pageContent?.statsGitHubFollowers ?? 'GitHub Followers'}</div>
-        </div>
-        <div class="card p-6 text-center">
-          <div class="text-accent mb-2 text-3xl font-bold md:text-4xl">{SITE_STATS.clientsServed}</div>
-          <div class="text-foreground-secondary text-sm">{pageContent?.statsClientsServed ?? 'Clients Served'}</div>
-        </div>
-      </div>
+      <StatsGrid profile={profile} />
     </div>
   </section>
 
