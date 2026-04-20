@@ -4,6 +4,8 @@ import { getAllPosts, getPostBySlug } from '@utils/blog';
 import { urlFor } from '@utils/sanity';
 import { PortableText } from 'astro-portabletext';
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const posts = await getAllPosts();
   return posts.map((post) => ({
